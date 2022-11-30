@@ -2,6 +2,15 @@
 #include<stdlib.h>
 #include<math.h>
 
+//Simple function to print array
+void printarr(int array[], int size)
+{
+    for(int i=0; i<size;i++)
+    {
+        printf("%d", array[i]);
+    }
+}
+
 int dec_bin(int d, int m[], int digits)
 {
     int b=0, i=0;
