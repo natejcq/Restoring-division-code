@@ -32,6 +32,7 @@ int dec_bin(int d, int m[], int digits)
 
 void reverse_arr(int arr[], int digits)
 {
+    
     int temp;
     for(int i = 0; i<digits/2; i++)
     {   
@@ -53,5 +54,30 @@ int main()
     //Finding number of digits
     int digits = (log(maximum)/log(2)) + 1;
     printf("digits is %d \n", digits);
+     int A[digits];
+    int M[digits];
+    int Q[digits];
+    int x = dec_bin(abs(a), Q, digits);
+    int y = dec_bin(abs(b), M, digits);
+    reverse_arr(Q, digits);
+    reverse_arr(M, digits);
+    printf("\nQ is");
+    printarr(Q, digits);
 }
-   
+
+
+
+int left(int acc[], int q[], int digits)
+{
+    int i;
+    for(i=digits; i>0; i--)
+    {
+        acc[i]=acc[i-1];
+    }
+    acc[0]=q[digits];
+    for(i=digits; i>0; i--)
+    {
+        q[i]=q[i-1];
+    }
+}
+
