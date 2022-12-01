@@ -64,19 +64,6 @@ void reverse_arr(int arr[], int digits)
     }
 }
 
-int left(int acc[], int q[], int digits)
-{
-    int i;
-    for(i=digits; i>0; i--)
-    {
-        acc[i]=acc[i-1];
-    }
-    acc[0]=q[digits];
-    for(i=digits; i>0; i--)
-    {
-        q[i]=q[i-1];
-    }
-}//left shift function 
 
 int main()
 {
