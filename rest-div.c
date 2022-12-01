@@ -10,6 +10,28 @@ void printarr(int array[], int size)
         printf("%d", array[i]);
     }
 }
+void updateAQ(int AQ[], int A[], int Q[], int s)
+{
+    int i=0;
+    int j=0;
+    while(i<2*s)
+    {
+       //Updating AQq with value of A
+       if(i<s)
+       {
+          AQ[i] = A[i]; 
+       }
+       //Updating AQq with value of Q
+       else
+       {
+          AQ[i] = Q[j];
+          j++;
+       }
+       //Increment i 
+       i++;
+    }
+
+}
 
 int dec_bin(int d, int m[], int digits)
 {
