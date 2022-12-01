@@ -10,6 +10,44 @@ void printarr(int array[], int size)
         printf("%d", array[i]);
     }
 }
+
+void add(int n1[], int n2[], int n, int ans[])
+{
+    int i, cy; //carry denoted by cy
+    i = n-1;
+    cy = 0;
+    while(i>=0)
+    {
+        if(cy + n1[i] + n2[i] == 3)
+        {
+            //case: 1+1+1 = 1 w/ carry of 1
+            cy = 1;
+            ans[i] = 1;
+        }
+        else if(cy + n1[i] + n2[i] == 2)
+        {
+            //case: 1+1+0 = 0 w/ carry of 1
+            cy = 1;
+            ans[i] = 0;
+        }
+        else if(cy + n1[i] + n2[i] == 1)
+        {
+            //case: 1+0+0 = 1
+            cy = 0;
+            ans[i] = 1;
+        }
+        else
+        {
+            cy = 0;
+            ans[i] = 0;
+        }
+        //Decrementing the value of i
+        i--;
+    }
+}
+//Addition function
+
+
 void updateAQ(int AQ[], int A[], int Q[], int s)
 {
     int i=0;
@@ -32,58 +70,58 @@ void updateAQ(int AQ[], int A[], int Q[], int s)
     }
 }
 
-//Function to take 2s complement of given binary number of 
-'n' bits
-void twosComplement(int number[], int n)
+//Function to take 2s complement of given binary number of  'n' bits
+void twosComplement(int number[], int n1[], int n)
 {
-//cy -> carry
-int cy= 0;
-int i=0;
-while(i<n)
-{
-if(number[i]==0)
-number[i]=1;
-else if(number[i]==1)
-number[i]=0;
-i++;
-}
-//We always add 1 after taking the one's complement
-int a = number[n-1];
-int b = 1;
-//checking if carry is generated
-cy = a + b - 1;
-if(a + b ==2)
-number[n-1] = 0;
-else
-number[n-1] = 1;
-//Now traversing the rest of the number and 
-generating / adding
-//the carry appropriately
-i = n-2;
-while(i>0)
-{
-if(cy + number[i] == 2)
-{
-//carry generated again
-cy = 1;
-number[i] = 0; 
-//1 + 1 = 0 w/ a carry of 1
-}
-else if(cy + number[i] == 1)
-{
-//1 + 0 = 1
-//No carry 
-cy = 0;
-number[i] = 1; 
-}
-else if(cy + number[i] == 0)
-{
-cy = 0;
-number[i] = 0;
-}
-//Decremeting the Value of i
-i--;
- } 
+    //number->given binary num
+    //n1->array in which 2s C will be stored
+    //n->number of digits
+    //cy -> carry
+    int cy= 0;
+    int i=0;
+    while(i<n)
+    {
+        if(number[i]==0)
+            n1[i]=1;
+        else if(number[i]==1)
+            n1[i]=0;
+        i++;
+    }
+    //We always add 1 after taking the one's complement
+    int a = n1[n-1];
+    int b = 1;
+    //checking if carry is generated
+    cy = a + b - 1;
+    if(a + b ==2)
+        n1[n-1] = 0;
+    else
+        nu1[n-1] = 1;
+    //Now traversing the rest of the number and generating / adding the carry appropriately
+    i = n-2;
+    while(i>0)
+    {
+        if(cy + n1[i] == 2)
+        {
+            //carry generated again
+            cy = 1;
+            n1[i] = 0; 
+            //1 + 1 = 0 w/ a carry of 1
+        }
+        else if(cy + n1[i] == 1)
+        {
+            //1 + 0 = 1
+            //No carry 
+            cy = 0;
+            n1[i] = 1; 
+        }
+        else if(cy + n1[i] == 0)
+        {
+            cy = 0;
+            n1[i] = 0;
+        }
+        //Decremeting the Value of i
+        i--;
+    } 
 }
 
 int left(int acc[], int q[], int digits)
@@ -173,8 +211,65 @@ int main()
     int y = dec_bin(abs(b), M, digits);
     reverse_arr(Q, digits);
     reverse_arr(M, digits);
-    printf("\nQ is");
-    printarr(Q, digits);
+    int m2[digits];
+    int AQ[2*digits];
+    updateAQ(AQ[], A[], Q[], digits);
+    printall(AQ[], digits);
+    twosComplement(M, m2, digits);
+    printf("\tStart\n");
+    while (n > 0)
+    {
+        left(acc, q, digits);
+        printf("_\tLeft Shift A,Q\n");
+        updateAQ(AQ[], A[], Q[], digits);
+        printall(AQ[], digits);
+        add(acc, m2);
+
+printf("_\tA=A-M\n");
+if (acc[3] == 0)
+{
+q[0] = 1;
+for (i = 3; i >= 0; i--)
+{
+printf("%d", acc[i]);
+}
+printf("\t");
+for (i = 3; i >= 0; i--)
+{
+printf("%d", q[i]);
+}
+printf("\tQo=1\n");
+}
+else
+{
+q[0] = 0;
+add(acc, m);
+for (i = 3; i >= 0; i--)
+{
+printf("%d", acc[i]);
+}
+printf("\t");
+for (i = 3; i >= 0; i--)
+{
+printf("%d", q[i]);
+}
+printf("\tQo=0; A=A+M\n");
+}
+n--;
+}
+printf("\nQuotient = ");
+for (i = 3; i >= 0; i--)
+{
+printf("%d", q[i]);
+}
+printf("\tRemainder = ");
+for (i = 3; i >= 0; i--)
+{
+printf("%d", acc[i]);
+}
+printf("\n");
+return 0;
+
 }
 
 
