@@ -32,7 +32,7 @@ void updateAQ(int AQ[], int A[], int Q[], int s)
     }
 }
 
-int left(int acc[], int q[])
+int left(int acc[], int q[], int digits)
 
 {
     int i;
