@@ -95,7 +95,7 @@ void twosComplement(int number[], int n1[], int n)
     if(a + b ==2)
         n1[n-1] = 0;
     else
-        nu1[n-1] = 1;
+        n1[n-1] = 1;
     //Now traversing the rest of the number and generating / adding the carry appropriately
     i = n-2;
     while(i>0)
@@ -186,7 +186,7 @@ void printall(int AQ[], int s)
     //Printing Q
     while(i< 2*s) 
     {
-        printf("%d", AQq[i]);
+        printf("%d", AQ[i]);
         i++;
     }
 }
