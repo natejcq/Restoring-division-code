@@ -220,56 +220,32 @@ int main()
     while (n > 0)
     {
         left(acc, q, digits);
-        printf("_\tLeft Shift A,Q\n");
+        printf("Left Shift A,Q\n");
         updateAQ(AQ[], A[], Q[], digits);
         printall(AQ[], digits);
-        add(acc, m2);
-
-printf("_\tA=A-M\n");
-if (acc[3] == 0)
-{
-q[0] = 1;
-for (i = 3; i >= 0; i--)
-{
-printf("%d", acc[i]);
-}
-printf("\t");
-for (i = 3; i >= 0; i--)
-{
-printf("%d", q[i]);
-}
-printf("\tQo=1\n");
-}
-else
-{
-q[0] = 0;
-add(acc, m);
-for (i = 3; i >= 0; i--)
-{
-printf("%d", acc[i]);
-}
-printf("\t");
-for (i = 3; i >= 0; i--)
-{
-printf("%d", q[i]);
-}
-printf("\tQo=0; A=A+M\n");
-}
-n--;
-}
-printf("\nQuotient = ");
-for (i = 3; i >= 0; i--)
-{
-printf("%d", q[i]);
-}
-printf("\tRemainder = ");
-for (i = 3; i >= 0; i--)
-{
-printf("%d", acc[i]);
-}
-printf("\n");
-return 0;
-
+        add(A, m2, digits, A);
+        printf("A=A-M\n");
+        if (A[digits] == 0)
+        {
+            Q[0] = 1;
+            updateAQ(AQ[], A[], Q[], digits);
+            printall(AQ[], digits);
+        }
+        else
+        {
+            Q[0] = 0;
+            add(A, M, digits, A);
+            printf("Qo=0; A=A+M\n");
+            updateAQ(AQ[], A[], Q[], digits);
+            printall(AQ[], digits);
+        }
+        n--;
+    }
+    printf("\nQuotient = ");
+    printarr(Q, digits);
+    printf("\nRemainder = ");
+    printarr(A, digits);
+    return 0;
 }
 
 
