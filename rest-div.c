@@ -32,6 +32,60 @@ void updateAQ(int AQ[], int A[], int Q[], int s)
     }
 }
 
+//Function to take 2s complement of given binary number of 
+'n' bits
+void twosComplement(int number[], int n)
+{
+//cy -> carry
+int cy= 0;
+int i=0;
+while(i<n)
+{
+if(number[i]==0)
+number[i]=1;
+else if(number[i]==1)
+number[i]=0;
+i++;
+}
+//We always add 1 after taking the one's complement
+int a = number[n-1];
+int b = 1;
+//checking if carry is generated
+cy = a + b - 1;
+if(a + b ==2)
+number[n-1] = 0;
+else
+number[n-1] = 1;
+//Now traversing the rest of the number and 
+generating / adding
+//the carry appropriately
+i = n-2;
+while(i>0)
+{
+if(cy + number[i] == 2)
+{
+//carry generated again
+cy = 1;
+number[i] = 0; 
+//1 + 1 = 0 w/ a carry of 1
+}
+else if(cy + number[i] == 1)
+{
+//1 + 0 = 1
+//No carry 
+cy = 0;
+number[i] = 1; 
+}
+else if(cy + number[i] == 0)
+{
+cy = 0;
+number[i] = 0;
+}
+//Decremeting the Value of i
+i--;
+ } 
+}
+
 int left(int acc[], int q[], int digits)
 
 {
