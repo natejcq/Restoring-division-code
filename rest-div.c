@@ -30,8 +30,22 @@ void updateAQ(int AQ[], int A[], int Q[], int s)
        //Increment i 
        i++;
     }
-
 }
+
+int left(int acc[], int q[])
+
+{
+    int i;
+    for (i = digits; i > 0; i--)
+    {
+          acc[i] = acc[i - 1];
+    }
+    acc[0] = q[digits];
+    for (i = digits; i > 0; i--)
+    {
+        q[i]=q[i-1];
+     }
+} //Left shift
 
 int dec_bin(int d, int m[], int digits)
 {
