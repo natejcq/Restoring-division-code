@@ -213,31 +213,32 @@ int main()
     reverse_arr(M, digits);
     int m2[digits];
     int AQ[2*digits];
-    updateAQ(AQ[], A[], Q[], digits);
-    printall(AQ[], digits);
+    updateAQ(AQ, A, Q, digits);
+    printall(AQ, digits);
     twosComplement(M, m2, digits);
+    int n = digits;
     printf("\tStart\n");
     while (n > 0)
     {
         left(acc, q, digits);
         printf("Left Shift A,Q\n");
-        updateAQ(AQ[], A[], Q[], digits);
-        printall(AQ[], digits);
+        updateAQ(AQ, A, Q, digits);
+        printall(AQ, digits);
         add(A, m2, digits, A);
         printf("A=A-M\n");
         if (A[digits] == 0)
         {
             Q[0] = 1;
-            updateAQ(AQ[], A[], Q[], digits);
-            printall(AQ[], digits);
+            updateAQ(AQ, A, Q, digits);
+            printall(AQ, digits);
         }
         else
         {
             Q[0] = 0;
             add(A, M, digits, A);
             printf("Qo=0; A=A+M\n");
-            updateAQ(AQ[], A[], Q[], digits);
-            printall(AQ[], digits);
+            updateAQ(AQ, A, Q, digits);
+            printall(AQ, digits);
         }
         n--;
     }
