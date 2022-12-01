@@ -78,6 +78,27 @@ void reverse_arr(int arr[], int digits)
     }
 }
 
+void printall(int AQ[], int s)
+{
+    //s here is size of the binary no.s
+    int i=0;
+    //Printing an array i.e. A
+    printf("\nA\t\tQ\n");
+    while(i<s)
+    {
+        printf("%d", AQ[i]);
+        i++;
+    }
+    printf("\t\t");
+    i = s;
+    //Printing Q
+    while(i< 2*s) 
+    {
+        printf("%d", AQq[i]);
+        i++;
+    }
+}
+
 
 int main()
 {
